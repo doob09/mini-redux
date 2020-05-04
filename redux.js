@@ -16,13 +16,13 @@ const createStore = (reducer) => {
     //!What dispatch does is to use reducer to get new state 
     //and notify each listener the state change.
     const dispatch = (action) => {
-        // using reducer function pass from createStore;
-        // go to reducer function to check action type and update the state coressponding to the 
-        // action type and then resassign the new state 
+        // using callback : reducer function pass from createStore;
+        // Invoke the reducer (get action from dispatch , state from the top  ) =>return new state
+        // assign new state to the current state
         state = reducer(state, action);
 
+        // new state is produced. listener need to be updated.
         // run through the array of listeners to invoke function
-        // it will update the state.
         listeners.forEach(listener => listener());
 
         return action;

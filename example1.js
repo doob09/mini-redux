@@ -40,21 +40,6 @@ store.subscribe(() => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // // global state management approach using redux
 // // check the type of action and initial state.
 // const reducer = (state = 1, action) => {
