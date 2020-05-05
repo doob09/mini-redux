@@ -1,39 +1,45 @@
-const incrementBtn = document.querySelector('.btn');
-const count = document.querySelector('.count');
+const incrementBtn1 = document.querySelector('#example-1 .btn');
+const count1 = document.querySelector('.count');
 // reducers produce the state of your application.
 //reducer will pass initial state as default and actions to the store 
 //reducer will define the action 
-const reducer = (state = 0, action) => {
-    console.log(state);
-    if (action.actionType === 'INCREMENT') {
-        let newstate = state + 1;
-        return newstate;
-    }
+
+const example1 = () => {
+
+
+    const reducer = (state = 0, action) => {
+        console.log(state);
+        if (action.actionType === 'INCREMENT') {
+            let newstate = state + 1;
+            return newstate;
+        }
+
+    };
+
+    // create store by using createStore function with reducer as argument
+    // the store can: get State, dispatch, subscribe or unsubscribe 
+    const store = createStore(reducer);
+
+
+    // add eventlistener to the button 
+    // when event trigger it will dispatch the action to the reducer
+    // dispatch will update the state as well when calling: create innitial state
+    // action is an object
+    incrementBtn1.addEventListener('click', () => {
+        // todo dispatch
+        store.dispatch({ actionType: 'INCREMENT' });
+    });
+
+    // subscribe UI to the store  to update the lastest state by using getState
+    // add subscriber as function to the subscribers List: which is array of function 
+    store.subscribe(() => {
+
+        count1.innerHTML = `${store.getState()}`;
+    });
 
 };
 
-// create store by using createStore function with reducer as argument
-// the store can: get State, dispatch, subscribe or unsubscribe 
-const store = createStore(reducer);
-
-
-// add eventlistener to the button 
-// when event trigger it will dispatch the action to the reducer
-// dispatch will update the state as well when calling: create innitial state
-// action is an object
-incrementBtn.addEventListener('click', () => {
-    // todo dispatch
-    store.dispatch({ actionType: 'INCREMENT' });
-});
-
-// subscribe UI to the store  to update the lastest state by using getState
-// add subscriber as function to the subscribers List: which is array of function 
-store.subscribe(() => {
-
-    count.innerHTML = `${store.getState()}`;
-});
-
-
+example1();
 
 
 

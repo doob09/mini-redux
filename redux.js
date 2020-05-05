@@ -1,5 +1,5 @@
 // createStore will return an object with 3 functions
-const createStore = (reducer) => {
+const createStore = (reducers) => {
     // innitial state is empty;
     // let to reassign  the state later since it is changing frequently
 
@@ -19,8 +19,8 @@ const createStore = (reducer) => {
         // using callback : reducer function pass from createStore;
         // Invoke the reducer (get action from dispatch , state from the top  ) =>return new state
         // assign new state to the current state
-        state = reducer(state, action);
-
+        state = reducers(state, action);
+        console.log(state);
         // new state is produced. listener need to be updated.
         // run through the array of listeners to invoke function
         listeners.forEach(listener => listener());
