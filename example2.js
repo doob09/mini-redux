@@ -21,16 +21,18 @@ const combineReducers = (reducers) => {
 };
 
 
-const increment = (state, action) => {
+const incrementReducer = (state, action) => {
     if (action.type === 'INCREMENT') {
+       
         return state ? state + 1 : 1;
+       
     }
     return state;
 }
 
 // return {inctReducer : state};
 const reds = combineReducers({
-    inctReducer: increment,
+    increment:  incrementReducer,
     // dectReducer: decrement
 });
 
@@ -45,5 +47,5 @@ btnInct.addEventListener('click', () => {
 
 store.subscribe(() => {
 
-    count2.innerHTML = `${store.getState().inctReducer}`;
+    count2.innerHTML = `${store.getState().increment}`;
 });
